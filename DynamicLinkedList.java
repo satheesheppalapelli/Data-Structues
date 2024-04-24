@@ -26,6 +26,14 @@ public class DynamicLinkedList {
         return head == null;
     }
 
+    // Method to insert a node at the beginning of the list
+    public void insertAtBeginning(int element) {
+        Node newNode = new Node(element); // Create a new node
+        newNode.next = head; // Set the next pointer of the new node to the current head
+        head = newNode; // Update the head of the list to point to the new node
+        size++; // Increment size of the list
+    }
+    
     // Method to insert an element at the end of the list
     public void insert(int element) {
         Node newNode = new Node(element);
@@ -107,10 +115,34 @@ public class DynamicLinkedList {
         }
         System.out.println();
     }
+    
+    // Method to reverse the linked list iteratively
+    public void reverse() {
+        Node prev = null;
+        Node current = head;
+        Node next = null;
+
+        while (current != null) {
+            // Store the next node
+            next = current.next;
+            // Reverse the link
+            current.next = prev;
+            // Move pointers one position ahead
+            prev = current;
+            current = next;
+        }
+
+        // Update the head to point to the new first node (prev)
+        head = prev;
+    }
 
     // Main method for testing
     public static void main(String[] args) {
         DynamicLinkedList list = new DynamicLinkedList();
+    //  list.insertAtBeginning(2);
+    //  list.insertAtBeginning(4);
+    //  list.insertAtBeginning(5);
+    //  list.display(); // Output: List: 5 4 2
         list.insert(2);
         list.insert(4);
         list.insert(5);
@@ -121,5 +153,7 @@ public class DynamicLinkedList {
         list.display(); // Output: List: 3 4 5
         list.update(6, 2); // Updating element at position 2
         list.display(); // Output: List: 3 4 6
+        list.reverse();
+        list.display(); // Output: List: 6 4 3
     }
 }
