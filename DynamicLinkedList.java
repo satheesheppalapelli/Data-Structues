@@ -1,6 +1,6 @@
 // Node class representing individual elements in the linked list
 class Node {
-    int data;   // Data stored in the node
+    int data;   // Data stored in the head node
     Node next;  // Reference to the next node in the list
 
     // Constructor to initialize a node with data
